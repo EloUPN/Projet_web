@@ -1,3 +1,17 @@
+/* ===================================
+   RESTAURANT NYLO - CSS MODERNE
+   Palette chaleureuse et élégante
+   =================================== */
+
+/* Import de la police personnalisée Atelas pour le titre */
+@font-face {
+    font-family: 'Atelas';
+    src: url('tritopani.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* Améliore le chargement */
+}
+
 /* Reset et styles de base */
 * {
     margin: 0;
@@ -5,81 +19,235 @@
     box-sizing: border-box;
 }
 
+:root {
+    /* Nouvelle palette de couleurs chaleureuses */
+    --cream-light: #EEE2DF;      /* Crème clair - fond principal */
+    --cream-warm: #EED7C5;       /* Crème chaud - sections alternées */
+    --mauve-soft: #C89F9C;       /* Mauve doux - accents subtils */
+    --terracotta: #CA7C5C;       /* Terracotta - éléments principaux */
+    --burgundy: #B36A5E;         /* Bordeaux rosé - titres et nav */
+    --white: #FFFFFF;            /* Blanc pur - contraste */
+    
+    /* Ombres douces pour la profondeur */
+    --shadow-sm: 0 2px 8px rgba(179, 106, 94, 0.1);
+    --shadow-md: 0 4px 16px rgba(179, 106, 94, 0.15);
+    --shadow-lg: 0 8px 24px rgba(179, 106, 94, 0.2);
+    
+    /* Transitions fluides */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Typographie élégante */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.7;
+    color: #3a3a3a;
+    background: linear-gradient(135deg, var(--cream-light) 0%, var(--cream-warm) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
-/* Header */
+/* ===================================
+   HEADER - Design élégant
+   =================================== */
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 0;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, var(--burgundy) 0%, var(--terracotta) 100%);
+    color: var(--white);
+    padding: 2rem 1rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
 }
 
+/* Effet de texture subtile en arrière-plan */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="rgba(255,255,255,0.03)" width="100" height="100"/></svg>');
+    pointer-events: none;
+}
+
+/* Titre principal - TRÈS ÉLÉGANT avec police Atelas et ombre */
 header h1 {
     text-align: center;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    font-family: 'Atelas', 'Georgia', 'Times New Roman', serif;
+    font-weight: normal;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+    
+    /* Ombres multiples pour effet 3D élégant */
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.3),
+        4px 4px 8px rgba(0, 0, 0, 0.2),
+        6px 6px 12px rgba(0, 0, 0, 0.1),
+        0 0 40px rgba(255, 255, 255, 0.1);
+    
+    /* Animation subtile au survol */
+    transition: var(--transition);
 }
 
-/* Navigation */
+header h1:hover {
+    letter-spacing: 0.25em;
+    text-shadow: 
+        3px 3px 6px rgba(0, 0, 0, 0.4),
+        6px 6px 12px rgba(0, 0, 0, 0.3),
+        9px 9px 18px rgba(0, 0, 0, 0.2),
+        0 0 50px rgba(255, 255, 255, 0.15);
+}
+
+/* Sous-titre optionnel */
+header p {
+    text-align: center;
+    font-size: 1.1rem;
+    font-style: italic;
+    opacity: 0.95;
+    letter-spacing: 0.05em;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===================================
+   NAVIGATION - Moderne et responsive
+   =================================== */
 nav {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1rem;
-    background-color: #555;
-    padding: 1rem 0;
+    gap: 0.5rem;
+    background: rgba(179, 106, 94, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 1.25rem 1rem;
+    margin-top: 1.5rem;
+    border-radius: 12px;
+    position: relative;
+    z-index: 1;
 }
 
 nav a {
-    color: #fff;
+    color: var(--white);
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    transition: var(--transition);
+    background: rgba(179, 106, 94, 0.85);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Effet de survol moderne */
+nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
+}
+
+nav a:hover::before {
+    left: 0;
 }
 
 nav a:hover {
-    background-color: #777;
+    background: rgba(202, 124, 92, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Main content */
+/* ===================================
+   CONTENU PRINCIPAL - Design moderne
+   =================================== */
 main {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    min-height: calc(100vh - 300px);
+    margin: 0 auto 3rem;
+    padding: 3rem;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    min-height: calc(100vh - 400px);
+    position: relative;
+}
+
+/* Bordure décorative subtile */
+main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--terracotta) 0%, var(--burgundy) 100%);
+    border-radius: 16px 16px 0 0;
 }
 
 main h2 {
-    color: #333;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 0.5rem;
+    color: var(--burgundy);
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--cream-warm);
+    position: relative;
+    font-family: 'Georgia', serif;
+}
+
+/* Accent décoratif sur les titres */
+main h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--terracotta);
 }
 
 main p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #4a4a4a;
 }
 
-/* Sections */
+/* ===================================
+   SECTIONS - Espacement harmonieux
+   =================================== */
 section {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--white) 0%, var(--cream-light) 100%);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+section:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
 }
 
 section h2 {
-    color: #333;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 0.5rem;
+    color: var(--burgundy);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--mauve-soft);
+    padding-bottom: 0.75rem;
 }
 
 section ul {
@@ -88,111 +256,376 @@ section ul {
 }
 
 section li {
-    padding: 0.5rem 0;
-    padding-left: 1.5rem;
+    padding: 0.75rem 0 0.75rem 2rem;
     position: relative;
+    transition: var(--transition);
+    border-radius: 6px;
 }
 
-section li:before {
-    content: "▸";
+section li:hover {
+    background: rgba(202, 124, 92, 0.08);
+    padding-left: 2.5rem;
+}
+
+/* Puce personnalisée élégante */
+section li::before {
+    content: "●";
     position: absolute;
-    left: 0;
+    left: 0.5rem;
+    color: var(--terracotta);
+    font-size: 1.2rem;
+    transition: var(--transition);
 }
 
-/* Forms */
+section li:hover::before {
+    color: var(--burgundy);
+    transform: scale(1.3);
+}
+
+/* ===================================
+   FORMULAIRES - Design moderne
+   =================================== */
 form {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    border: 1px solid #ddd;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, var(--white) 0%, var(--cream-light) 100%);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--mauve-soft);
 }
 
 label {
     display: block;
-    margin-top: 1rem;
-    font-weight: bold;
-    color: #333;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--burgundy);
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
 }
 
+/* Champs de saisie modernes */
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="tel"],
 input[type="date"],
 input[type="time"],
-input[type="number"] {
+input[type="number"],
+textarea,
+select {
     width: 100%;
-    padding: 0.75rem;
+    padding: 1rem;
     margin-top: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 2px solid var(--cream-warm);
+    border-radius: 10px;
     font-size: 1rem;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--white);
+    transition: var(--transition);
+    color: #3a3a3a;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="tel"]:focus,
-input[type="date"]:focus,
-input[type="time"]:focus,
-input[type="number"]:focus {
+/* Focus élégant sur les champs */
+input:focus,
+textarea:focus,
+select:focus {
     outline: none;
-    border-color: #555;
-    background-color: #f0f0f0;
+    border-color: var(--terracotta);
+    box-shadow: 0 0 0 4px rgba(202, 124, 92, 0.1);
+    background: var(--cream-light);
 }
 
-button {
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Bouton moderne et attractif */
+button,
+.btn,
+a.button {
+    display: inline-block;
     width: 100%;
-    padding: 0.75rem;
-    margin-top: 1.5rem;
-    background-color: #333;
-    color: #fff;
+    padding: 1.25rem 2.5rem;
+    margin-top: 2rem;
+    background: linear-gradient(135deg, var(--terracotta) 0%, var(--burgundy) 100%);
+    color: var(--white);
     border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: bold;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #555;
-}
-
-/* Footer */
-footer {
-    background-color: #333;
-    color: #fff;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(179, 106, 94, 0.4);
+    text-transform: uppercase;
+    text-decoration: none;
     text-align: center;
-    padding: 1rem 0;
-    margin-top: 3rem;
-    border-top: 1px solid #555;
+    line-height: 1.4;
+}
+
+button:hover,
+.btn:hover,
+a.button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(179, 106, 94, 0.5);
+    background: linear-gradient(135deg, var(--burgundy) 0%, var(--terracotta) 100%);
+}
+
+button:active,
+.btn:active,
+a.button:active {
+    transform: translateY(-1px);
+}
+
+/* Boutons spécifiques pour l'accueil - TRÈS VISIBLES */
+.home-buttons,
+.accueil-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem;
+}
+
+.home-buttons a,
+.accueil-buttons a,
+.home-buttons button,
+.accueil-buttons button {
+    width: 100%;
+    padding: 1.5rem 3rem;
+    background: var(--white);
+    color: var(--burgundy);
+    border: 3px solid var(--terracotta);
+    border-radius: 15px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 6px 20px rgba(202, 124, 92, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet de fond au survol */
+.home-buttons a::before,
+.accueil-buttons a::before,
+.home-buttons button::before,
+.accueil-buttons button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--terracotta) 0%, var(--burgundy) 100%);
+    transition: var(--transition);
+    z-index: -1;
+}
+
+.home-buttons a:hover,
+.accueil-buttons a:hover,
+.home-buttons button:hover,
+.accueil-buttons button:hover {
+    color: var(--white);
+    border-color: var(--burgundy);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(202, 124, 92, 0.5);
+}
+
+.home-buttons a:hover::before,
+.accueil-buttons a:hover::before,
+.home-buttons button:hover::before,
+.accueil-buttons button:hover::before {
+    left: 0;
+}
+
+/* ===================================
+   FOOTER - Design cohérent
+   =================================== */
+footer {
+    background: linear-gradient(135deg, var(--burgundy) 0%, var(--terracotta) 100%);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 4rem;
+    box-shadow: var(--shadow-lg);
 }
 
 footer p {
-    margin: 0;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    opacity: 0.95;
 }
 
-/* Responsive */
+/* ===================================
+   RESPONSIVE - Mobile d'abord
+   =================================== */
+
+/* Tablettes */
 @media (max-width: 768px) {
+    /* Titre adapté mobile */
+    header h1 {
+        font-size: 2.5rem;
+        letter-spacing: 0.1em;
+    }
+    
+    /* Navigation verticale sur mobile */
     nav {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+        padding: 1rem;
     }
 
     nav a {
-        width: 90%;
+        width: 100%;
         text-align: center;
+        padding: 1rem;
     }
 
+    /* Contenu principal adapté */
     main {
-        padding: 1rem;
+        padding: 2rem 1.5rem;
+        margin: 0 1rem 2rem;
+    }
+    
+    main h2 {
+        font-size: 1.75rem;
     }
 
+    /* Formulaire adapté mobile */
     form {
-        padding: 1rem;
+        padding: 1.5rem;
+        margin: 1rem;
     }
+    
+    section {
+        padding: 1.5rem;
+    }
+    
+    /* Boutons d'accueil adaptés tablette */
+    .home-buttons,
+    .accueil-buttons {
+        padding: 1.5rem 1rem;
+    }
+    
+    .home-buttons a,
+    .accueil-buttons a,
+    .home-buttons button,
+    .accueil-buttons button {
+        font-size: 1.2rem;
+        padding: 1.3rem 2rem;
+    }
+}
+
+/* Petits mobiles */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2rem;
+        letter-spacing: 0.08em;
+    }
+    
+    main {
+        padding: 1.5rem 1rem;
+        margin: 0 0.5rem 1.5rem;
+    }
+    
+    main h2 {
+        font-size: 1.5rem;
+    }
+    
+    form {
+        padding: 1.25rem;
+    }
+    
+    button {
+        font-size: 1rem;
+        padding: 0.9rem 1.5rem;
+    }
+    
+    /* Boutons d'accueil adaptés mobile */
+    .home-buttons,
+    .accueil-buttons {
+        padding: 1rem 0.5rem;
+        gap: 1.25rem;
+    }
+    
+    .home-buttons a,
+    .accueil-buttons a,
+    .home-buttons button,
+    .accueil-buttons button {
+        font-size: 1.1rem;
+        padding: 1.2rem 1.5rem;
+        letter-spacing: 0.06em;
+    }
+}
+
+/* ===================================
+   ANIMATIONS ET EFFETS SPÉCIAUX
+   =================================== */
+
+/* Animation de chargement douce */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+main, section {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Effet de survol sur les cartes */
+.card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ===================================
+   UTILITAIRES
+   =================================== */
+
+/* Espacement */
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+
+/* Texte */
+.text-center { text-align: center; }
+.text-terracotta { color: var(--terracotta); }
+.text-burgundy { color: var(--burgundy); }
+
+/* Accessibilité - Amélioration du contraste */
+::selection {
+    background: var(--terracotta);
+    color: var(--white);
+}
+
+/* Focus visible pour la navigation au clavier */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--terracotta);
+    outline-offset: 2px;
 }
