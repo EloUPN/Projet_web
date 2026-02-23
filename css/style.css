@@ -70,14 +70,7 @@ header h1 {
     transition: var(--transition);
 }
 
-header h1:hover {
-    letter-spacing: 0.25em;
-    text-shadow: 
-        3px 3px 6px rgba(0, 0, 0, 0.4),
-        6px 6px 12px rgba(0, 0, 0, 0.3),
-        9px 9px 18px rgba(0, 0, 0, 0.2),
-        0 0 50px rgba(255, 255, 255, 0.15);
-}
+/* header h1:hover → géré par animations.js */
 
 header h1 a {
     text-decoration: none;
@@ -85,10 +78,29 @@ header h1 a {
 }
 
 
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header-right a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 6px;
+    box-shadow: 0 2px 8px rgba(179,106,94,0.18);
+    line-height: 0; /* supprime l'espace fantôme sous l'img */
+}
+
 /* Icône */
 .user-icon {
     width: 45px;
     height: 45px;
+    display: block; /* évite l'espace inline sous l'image */
+    filter: drop-shadow(0 3px 8px rgba(179,106,94,0.35));
+    transition: filter 0.25s ease;
 }
 
 /* Typographie élégante */
@@ -134,27 +146,12 @@ nav a {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Effet de survol moderne */
-nav a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    transition: var(--transition);
-}
-
-nav a:hover::before {
-    left: 0;
-}
+/* nav a::before slide + .home-buttons a::before → remplacés par effet ripple dans animations.js */
 
 nav a:hover {
     background: rgba(202, 124, 92, 0.95);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
     border-color: rgba(255, 255, 255, 0.5);
+    /* transform + box-shadow → animations.js */
 }
 
 /* ===================================
@@ -224,10 +221,7 @@ section {
     transition: var(--transition);
 }
 
-section:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
-}
+/* section:hover → géré par animations.js */
 
 section h2 {
     color: var(--burgundy);
@@ -248,10 +242,7 @@ section li {
     border-radius: 6px;
 }
 
-section li:hover {
-    background: rgba(202, 124, 92, 0.08);
-    padding-left: 2.5rem;
-}
+/* section li:hover → géré par animations.js */
 
 /* Puce personnalisée élégante */
 section li::before {
@@ -263,10 +254,7 @@ section li::before {
     transition: var(--transition);
 }
 
-section li:hover::before {
-    color: var(--burgundy);
-    transform: scale(1.3);
-}
+/* section li:hover::before → géré par animations.js */
 
 /* ===================================
    FORMULAIRES - Design moderne
@@ -355,16 +343,11 @@ a.button {
 button:hover,
 .btn:hover,
 a.button:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(179, 106, 94, 0.5);
     background: linear-gradient(135deg, var(--burgundy) 0%, var(--terracotta) 100%);
+    /* transform + box-shadow → animations.js */
 }
 
-button:active,
-.btn:active,
-a.button:active {
-    transform: translateY(-1px);
-}
+
 
 /* Boutons spécifiques pour l'accueil - TRÈS VISIBLES */
 .home-buttons,
@@ -400,38 +383,11 @@ a.button:active {
     overflow: hidden;
 }
 
-/* Effet de fond au survol */
-.home-buttons a::before,
-.accueil-buttons a::before,
-.home-buttons button::before,
-.accueil-buttons button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--terracotta) 0%, var(--burgundy) 100%);
-    transition: var(--transition);
-    z-index: -1;
-}
+/* .home-buttons a::before → remplacé par animations.js */
 
-.home-buttons a:hover,
-.accueil-buttons a:hover,
-.home-buttons button:hover,
-.accueil-buttons button:hover {
-    color: var(--white);
-    border-color: var(--burgundy);
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 10px 30px rgba(202, 124, 92, 0.5);
-}
+/* .home-buttons a:hover → géré par animations.js */
 
-.home-buttons a:hover::before,
-.accueil-buttons a:hover::before,
-.home-buttons button:hover::before,
-.accueil-buttons button:hover::before {
-    left: 0;
-}
+/* .home-buttons a:hover::before → remplacé par effet ripple dans animations.js */
 
 /* ===================================
    FOOTER - Design cohérent
@@ -557,21 +513,7 @@ footer p {
    ANIMATIONS ET EFFETS SPÉCIAUX
    =================================== */
 
-/* Animation de chargement douce */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-main, section {
-    animation: fadeIn 0.6s ease-out;
-}
+/* Animation de chargement → gérée par animations.js (Web Animations API) */
 
 /* Effet de survol sur les cartes */
 .card {
@@ -582,10 +524,7 @@ main, section {
     transition: var(--transition);
 }
 
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-}
+/* .card:hover → géré par animations.js */
 
 /* ===================================
    UTILITAIRES
@@ -615,4 +554,3 @@ input:focus-visible {
     outline: 3px solid var(--terracotta);
     outline-offset: 2px;
 }
-
