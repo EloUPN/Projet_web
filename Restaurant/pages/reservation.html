@@ -8,20 +8,10 @@
 
 <body>
 
-<header>
-    <h1>Réserver une table</h1>
-    <nav>
-        <a href="../index.html">Accueil</a>
-        <a href="../pages/menu.html">Menu</a>
-        <a href="pages/reservation.html">Réservation</a>
-        <a href="../pages/connexion.html">Connexion</a>
-        <a href="../pages/profil.html">Profil</a>
-        <a href="../pages/inscription.html">Inscription</a>
-    </nav>
-</header>
+<div id="header-container"></div>
 
 <main>
-<form action="#" method="post">
+<form id="formReservation" action="#" method="post">
         <label for="nom">Nom :</label><br>
         <input type="text" id="nom" name="nom" required><br><br>
 
@@ -37,6 +27,10 @@
         <button type="submit">Réserver</button>
     </form>
 </main>
+
+    <script src="../js/header.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/reservation.js"></script>
 
 </body>
 </html>

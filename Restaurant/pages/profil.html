@@ -7,33 +7,28 @@
 </head>
 <body>
 
-<header>
-    <h1>Mon Profil</h1>
-    <nav>
-        <a href="../index.html">Accueil</a>
-        <a href="../pages/menu.html">Menu</a>
-        <a href="../pages/reservation.html">Réservation</a>
-        <a href="../pages/connexion.html">Connexion</a>
-        <a href="pages/profil.html">Profil</a>
-        <a href="../pages/inscription.html">Inscription</a>
-    </nav>
-</header>
+<div id="header-container"></div>
+
 
 <main>
-    <section>
-        <p><strong>Nom :</strong> Zhou</p>
-        <p><strong>Prénom :</strong> Elodie</p>
-        <p><strong>Email :</strong> ZhouElodie@email.com</p>
-    </section>
+    <h2>Mon profil</h2>
 
-    <section>
-        <h2>Mes réservations</h2>
-        <ul>
-            <li>12/03/2026 - 20h - 2 personnes</li>
-            <li>20/03/2026 - 19h - 4 personnes</li>
-        </ul>
-    </section>
+    <!-- Conteneur pour afficher dynamiquement les infos utilisateur -->
+    <div id="infosUser"></div>
+
+    <!-- Conteneur pour afficher dynamiquement les réservations -->
+    <div id="infosReservation"></div>
+
+    <!-- Bouton pour se déconnecter -->
+    <button id="logoutBtn">Déconnexion</button>
+
+    <!-- Lien vers les réservations (optionnel si tu veux garder un accès rapide) -->
+    <a href="reservation.html">Mes réservations</a>
 </main>
+
+    <script src="js/header.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/profil.js"></script>
 
 </body>
 </html>
