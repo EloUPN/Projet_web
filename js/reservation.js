@@ -4,12 +4,12 @@ if (!isLoggedIn()) {
 }
 
 document.getElementById("formReservation").addEventListener("submit", function(event) {
-
     event.preventDefault();
 
     const form = document.getElementById("formReservation");
     let date = document.getElementById("date").value;
-    let personnes = document.getElementById("personnes").value;
+    let heure = document.getElementById("heure").value;
+    let personnes = parseInt(document.getElementById("personnes").value);
 
     let today = new Date().toISOString().split("T")[0];
 
@@ -21,16 +21,26 @@ document.getElementById("formReservation").addEventListener("submit", function(e
 
     if (personnes <= 0) {
         if (window.animateFormError) animateFormError(form);
+    if (!heure) {
+        alert("Veuillez choisir une heure.");
+        return;
+    }
+
+    if (personnes <= 0 || isNaN(personnes)) {
         alert("Nombre de personnes invalide.");
         return;
     }
 
     let reservation = {
         date: date,
-        personnes: personnes
+        heure: heure,
+        personnes: personnes,
+        userEmail: getCurrentUser().email
     };
 
-    localStorage.setItem("reservation", JSON.stringify(reservation));
+    let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+    reservations.push(reservation);
+    localStorage.setItem("reservations", JSON.stringify(reservations));
 
     if (window.animateFormSuccess) animateFormSuccess(form);
 

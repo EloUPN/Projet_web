@@ -1,22 +1,46 @@
-// Sauvegarder un utilisateur
-function saveUser(user) {
-    localStorage.setItem("user", JSON.stringify(user));
+// =============================
+// Gestion des utilisateurs
+// =============================
+
+// Récupérer tous les utilisateurs
+function getUsers() {
+    return JSON.parse(localStorage.getItem("users")) || [];
+}
+
+// Ajouter un nouvel utilisateur
+function addUser(user) {
+    let users = getUsers();
+    users.push(user);
+    localStorage.setItem("users", JSON.stringify(users));
+}
+
+// =============================
+// Gestion de la session
+// =============================
+
+// Définir l'utilisateur connecté
+function setCurrentUser(user) {
+    localStorage.setItem("currentUser", JSON.stringify(user));
 }
 
 // Récupérer l'utilisateur connecté
-function getUser() {
-    return JSON.parse(localStorage.getItem("user"));
-}
-
-// Déconnexion
-function logout() {
-    localStorage.removeItem("user");
+function getCurrentUser() {
+    return JSON.parse(localStorage.getItem("currentUser"));
 }
 
 // Vérifier si connecté
 function isLoggedIn() {
-    return localStorage.getItem("user") !== null;
+    return getCurrentUser() !== null;
 }
+
+// Déconnexion
+function logout() {
+    localStorage.removeItem("currentUser");
+}
+
+// =============================
+// Validations
+// =============================
 
 // Vérifier si email valide
 function emailValide(email) {
