@@ -19,14 +19,13 @@ document.getElementById("formReservation").addEventListener("submit", function(e
         return;
     }
 
-    if (personnes <= 0) {
-        if (window.animateFormError) animateFormError(form);
     if (!heure) {
         alert("Veuillez choisir une heure.");
         return;
     }
 
     if (personnes <= 0 || isNaN(personnes)) {
+        if (window.animateFormError) animateFormError(form);
         alert("Nombre de personnes invalide.");
         return;
     }
