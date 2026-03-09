@@ -7,6 +7,7 @@ document.getElementById("formInscription").addEventListener("submit", function(e
     let prenom = document.getElementById("prenom").value;
     let email = document.getElementById("email").value;
     let mdp = document.getElementById("mdp").value;
+    let confirmMdp = document.getElementById("confirmPassword").value;  
 
     if (nom === "" || prenom === "" || email === "" || mdp === "") {
         if (window.animateFormError) animateFormError(form);
