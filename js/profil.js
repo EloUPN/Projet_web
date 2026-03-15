@@ -1,6 +1,6 @@
 // Rediriger si pas connecté
 if (!isLoggedIn()) {
-    window.location.href = "connexion.html";
+    window.location.href = "./connexion.html";
 }
 
 let user = getCurrentUser();
@@ -34,5 +34,5 @@ if (userReservations.length > 0) {
 // Déconnexion
 document.getElementById("logoutBtn").addEventListener("click", function() {
     logout();
-    window.location.href = "index.html";
+    window.location.href = "./index.html";
 });

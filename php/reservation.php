@@ -11,15 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     exit;
 }
 
-$nom = trim($_POST["nom"] ?? "");
-$prenom = trim($_POST["prenom"] ?? "");
+$user_id = intval($_POST["user_id"] ?? 0);
 $date = trim($_POST["date"] ?? "");
 $heure = trim($_POST["heure"] ?? "");
 $personnes = intval($_POST["personnes"] ?? 0);
 $message = trim($_POST["message"] ?? "");
 
 // Vérification des champs obligatoires
-if ($nom === "" || $prenom === "" || $date === "" || $heure === "" || $personnes <= 0) {
+if ($user_id <= 0 || $date === "" || $heure === "" || $personnes <= 0) {
     echo json_encode([
         "success" => false,
         "message" => "Veuillez remplir correctement tous les champs obligatoires."
@@ -38,15 +37,22 @@ if ($date < $today) {
 }
 
 // Insertion dans la base
-$stmt = $pdo->prepare("
-    INSERT INTO reservations (nom, prenom, date, heure, personnes, message)
-    VALUES (?, ?, ?, ?, ?, ?)
-");
+try {
+    $stmt = $pdo->prepare("
+        INSERT INTO reservations (id_user, date, heure, personnes, message)
+        VALUES (?, ?, ?, ?, ?)
+    ");
 
-$stmt->execute([$nom, $prenom, $date, $heure, $personnes, $message]);
+    $stmt->execute([$user_id, $date, $heure, $personnes, $message]);
 
-echo json_encode([
-    "success" => true,
-    "message" => "Réservation enregistrée avec succès."
-]);
+    echo json_encode([
+        "success" => true,
+        "message" => "Réservation enregistrée avec succès."
+    ]);
+} catch (PDOException $e) {
+    echo json_encode([
+        "success" => false,
+        "message" => "Erreur lors de l'enregistrement : " . $e->getMessage()
+    ]);
+}
 ?>

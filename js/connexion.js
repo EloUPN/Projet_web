@@ -16,7 +16,7 @@ document.getElementById("formConnexion").addEventListener("submit", function(eve
     formData.append("email", email);
     formData.append("password", password);
 
-    fetch("../php/connexion.php", {
+    fetch("./php/connexion.php", {
         method: "POST",
         body: formData
     })
@@ -29,7 +29,7 @@ document.getElementById("formConnexion").addEventListener("submit", function(eve
             localStorage.setItem("currentUser", JSON.stringify(data.user));
 
             alert("Connexion réussie !");
-            window.location.href = "profil.html";
+            window.location.href = "./profil.html";
 
         } else {
 

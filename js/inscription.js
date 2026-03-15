@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append("password", password);
         formData.append("confirmPassword", confirmPassword);
 
-        fetch("../php/inscription.php", {
+        fetch("./php/inscription.php", {
             method: "POST",
             body: formData
         })
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             if (data.success) {
                 alert(data.message);
-                window.location.href = "../pages/connexion.html";
+                window.location.href = "./connexion.html";
             } else {
                 alert(data.message);
             }

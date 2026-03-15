@@ -1,6 +1,6 @@
 // Vérifier si connecté
 if (!isLoggedIn()) {
-    window.location.href = "connexion.html";
+    window.location.href = "./connexion.html";
 }
 
 document.getElementById("formReservation").addEventListener("submit", function(event) {
@@ -12,7 +12,7 @@ document.getElementById("formReservation").addEventListener("submit", function(e
 
     if (!currentUser) {
         alert("Utilisateur non connecté.");
-        window.location.href = "connexion.html";
+        window.location.href = "./connexion.html";
         return;
     }
 
@@ -42,14 +42,13 @@ document.getElementById("formReservation").addEventListener("submit", function(e
     }
 
     const formData = new FormData();
-    formData.append("nom", currentUser.nom);
-    formData.append("prenom", currentUser.prenom);
+    formData.append("user_id", currentUser.id);
     formData.append("date", date);
     formData.append("heure", heure);
     formData.append("personnes", personnes);
     formData.append("message", message);
 
-    fetch("../php/reservation.php", {
+    fetch("./php/reservation.php", {
         method: "POST",
         body: formData
     })

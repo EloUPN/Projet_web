@@ -53,9 +53,3 @@ function motDePasseValide(mdp) {
     let regex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
     return regex.test(mdp);
 }
-
-//REDIRIGE L UTILISATEUR VERS SON PROFIL OU LA PAGE DE CONNEXION SELON SON STATUT
-document.addEventListener("DOMContentLoaded", function() {
-    const userIcon = document.getElementById("userIcon");
-    userIcon.href = isLoggedIn() ? "profil.html" : "login.html";
-});
