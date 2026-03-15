@@ -6,7 +6,7 @@ document.getElementById("formInscription").addEventListener("submit", function(e
     let nom = document.getElementById("nom").value;
     let prenom = document.getElementById("prenom").value;
     let email = document.getElementById("email").value;
-    let mdp = document.getElementById("mdp").value;
+    let mdp = document.getElementById("password").value;
     let confirmMdp = document.getElementById("confirmPassword").value;  
 
     if (nom === "" || prenom === "" || email === "" || mdp === "") {
@@ -24,6 +24,12 @@ document.getElementById("formInscription").addEventListener("submit", function(e
     if (!motDePasseValide(mdp)) {
         if (window.animateFormError) animateFormError(form);
         alert("Le mot de passe doit contenir au moins 6 caractères, une majuscule et un chiffre.");
+        return;
+    }
+
+    if(mdp !== confirmMdp) {
+        if (window.animateFormError) animateFormError(form);
+        alert("Les mots de passe ne correspondent pas.");
         return;
     }
 
