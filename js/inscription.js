@@ -1,66 +1,68 @@
-document.getElementById("formInscription").addEventListener("submit", function(event) {
-
-    event.preventDefault();
-
+document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("formInscription");
-    let nom = document.getElementById("nom").value;
-    let prenom = document.getElementById("prenom").value;
-    let email = document.getElementById("email").value;
-    let mdp = document.getElementById("password").value;
-    let confirmMdp = document.getElementById("confirmPassword").value;  
 
-    if (nom === "" || prenom === "" || email === "" || mdp === "") {
-        if (window.animateFormError) animateFormError(form);
-        alert("Veuillez remplir tous les champs !");
-        return;
-    }
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    if (!emailValide(email)) {
-        if (window.animateFormError) animateFormError(form);
-        alert("Veuillez entrer un email valide.");
-        return;
-    }
+        const nom = document.getElementById("nom").value.trim();
+        const prenom = document.getElementById("prenom").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
 
-    if (!motDePasseValide(mdp)) {
-        if (window.animateFormError) animateFormError(form);
-        alert("Le mot de passe doit contenir au moins 6 caractères, une majuscule et un chiffre.");
-        return;
-    }
+        if (nom === "" || prenom === "" || email === "" || password === "" || confirmPassword === "") {
+            alert("Veuillez remplir tous les champs.");
+            return;
+        }
 
-    if(mdp !== confirmMdp) {
-        if (window.animateFormError) animateFormError(form);
-        alert("Les mots de passe ne correspondent pas.");
-        return;
-    }
+        if (!emailValide(email)) {
+            alert("Veuillez entrer un email valide.");
+            return;
+        }
 
-    // Vérifier si email déjà utilisé
-    let users = getUsers();
-    let emailExiste = users.find(u => u.email === email);
+        if (!motDePasseValide(password)) {
+            alert("Le mot de passe doit contenir au moins 6 caractères, une majuscule et un chiffre.");
+            return;
+        }
 
-    if (emailExiste) {
-        alert("Cet email est déjà utilisé.");
-        return;
-    }
+        if (password !== confirmPassword) {
+            alert("Les mots de passe ne correspondent pas.");
+            return;
+        }
 
-    // Créer l'utilisateur
-    let user = {
-        nom: nom,
-        prenom: prenom,
-        email: email,
-        mdp: mdp
-    };
+        const formData = new FormData();
+        formData.append("nom", nom);
+        formData.append("prenom", prenom);
+        formData.append("email", email);
+        formData.append("password", password);
+        formData.append("confirmPassword", confirmPassword);
 
-    // Ajouter utilisateur dans localStorage
-    addUser(user);
-
-    // Connecter l'utilisateur directement
-    localStorage.setItem("currentUser", JSON.stringify(user));
-
-    if (window.animateFormSuccess) animateFormSuccess(form);
-
-    setTimeout(() => {
-        alert("Inscription réussie !");
-        window.location.href = "connexion.html";
-    }, 520);
-
+        fetch("../php/inscription.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                window.location.href = "../pages/connexion.html";
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Erreur :", error);
+            alert("Une erreur est survenue lors de l'inscription.");
+        });
+    });
 });
+
+function emailValide(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+function motDePasseValide(password) {
+    const regex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
+    return regex.test(password);
+}

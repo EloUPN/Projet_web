@@ -7,11 +7,21 @@ document.getElementById("formReservation").addEventListener("submit", function(e
     event.preventDefault();
 
     const form = document.getElementById("formReservation");
-    let date = document.getElementById("date").value;
-    let heure = document.getElementById("heure").value;
-    let personnes = parseInt(document.getElementById("personnes").value);
 
-    let today = new Date().toISOString().split("T")[0];
+    const currentUser = getCurrentUser();
+
+    if (!currentUser) {
+        alert("Utilisateur non connecté.");
+        window.location.href = "connexion.html";
+        return;
+    }
+
+    const date = document.getElementById("date").value;
+    const heure = document.getElementById("heure").value;
+    const personnes = parseInt(document.getElementById("personnes").value);
+    const message = document.getElementById("message").value.trim();
+
+    const today = new Date().toISOString().split("T")[0];
 
     if (date < today) {
         if (window.animateFormError) animateFormError(form);
@@ -20,6 +30,7 @@ document.getElementById("formReservation").addEventListener("submit", function(e
     }
 
     if (!heure) {
+        if (window.animateFormError) animateFormError(form);
         alert("Veuillez choisir une heure.");
         return;
     }
@@ -30,21 +41,34 @@ document.getElementById("formReservation").addEventListener("submit", function(e
         return;
     }
 
-    let reservation = {
-        date: date,
-        heure: heure,
-        personnes: personnes,
-        userEmail: getCurrentUser().email
-    };
+    const formData = new FormData();
+    formData.append("nom", currentUser.nom);
+    formData.append("prenom", currentUser.prenom);
+    formData.append("date", date);
+    formData.append("heure", heure);
+    formData.append("personnes", personnes);
+    formData.append("message", message);
 
-    let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
-    reservations.push(reservation);
-    localStorage.setItem("reservations", JSON.stringify(reservations));
+    fetch("../php/reservation.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            if (window.animateFormSuccess) animateFormSuccess(form);
 
-    if (window.animateFormSuccess) animateFormSuccess(form);
-
-    setTimeout(() => {
-        alert("Réservation enregistrée !");
-    }, 520);
-
+            setTimeout(() => {
+                alert(data.message);
+                form.reset();
+            }, 520);
+        } else {
+            if (window.animateFormError) animateFormError(form);
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        console.error("Erreur :", error);
+        alert("Une erreur est survenue lors de la réservation.");
+    });
 });

@@ -3,23 +3,45 @@ document.getElementById("formConnexion").addEventListener("submit", function(eve
     event.preventDefault();
 
     const form = document.getElementById("formConnexion");
-    let email = document.getElementById("emailConnexion").value;
-    let mdp = document.getElementById("mdpConnexion").value;
 
-    let users = getUsers(); // récupère tous les utilisateurs
+    const email = document.getElementById("emailConnexion").value.trim();
+    const password = document.getElementById("mdpConnexion").value;
 
-    // chercher l'utilisateur correspondant
-    let userFound = users.find(u => 
-        u.email === email && u.mdp === mdp
-    );
-
-    if (userFound) {
-        localStorage.setItem("currentUser", JSON.stringify(userFound));
-        alert("Connexion réussie !");
-        window.location.href = "profil.html";
-    } else {
-        if (window.animateFormError) animateFormError(form);
-        alert("Email ou mot de passe incorrect.");
+    if (email === "" || password === "") {
+        alert("Veuillez remplir tous les champs.");
+        return;
     }
+
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
+
+    fetch("../php/connexion.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        if (data.success) {
+
+            // stocker utilisateur connecté
+            localStorage.setItem("currentUser", JSON.stringify(data.user));
+
+            alert("Connexion réussie !");
+            window.location.href = "profil.html";
+
+        } else {
+
+            if (window.animateFormError) animateFormError(form);
+            alert(data.message);
+
+        }
+
+    })
+    .catch(error => {
+        console.error(error);
+        alert("Erreur serveur.");
+    });
 
 });
