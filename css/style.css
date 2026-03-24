@@ -680,3 +680,34 @@ ul li span.price {
     color: #333;
     min-width: 50px;
 }
+#reservationList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    list-style: none;
+}
+
+.reservation-info p {
+    margin: 0.2rem 0;
+}
+
+.reservation-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.edit-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
