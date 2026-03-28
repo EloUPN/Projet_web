@@ -135,6 +135,7 @@ function initButtonHover() {
     document.querySelectorAll("button, .btn, a.button").forEach(btn => {
         if (btn.closest(".menu-item, .plat, .dish")) return;
         if (btn.classList.contains("nav-btn")) return;
+        if (btn.classList.contains("nav-toggle")) return;
         const clone = btn.cloneNode(true);
         clone.querySelectorAll("img").forEach(i => i.remove());
         if (btn.querySelector("img") && clone.textContent.trim().length === 0) return;
@@ -619,6 +620,7 @@ function initCardHover() {
 function initRipple() {
     document.querySelectorAll("button, .btn, a.button, nav a, .home-buttons a, .accueil-buttons a").forEach(el => {
         if (el.closest(".menu-item, .plat, .dish")) return;
+        if (el.classList.contains("nav-toggle")) return;
 
         el.addEventListener("click", function(e) {
             const ripple = document.createElement("span");

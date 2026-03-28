@@ -1,9 +1,17 @@
-<header class="header">
+<header class="header" id="site-header">
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu">
+    <span class="nav-toggle-box" aria-hidden="true">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </span>
+  </button>
+
   <div class="header-left">
     <h1><a href="./index.html" class="restaurant-name">Nylo</a></h1>
   </div>
 
-  <nav class="header-center">
+  <nav id="main-nav" class="header-center main-nav" aria-label="Navigation principale">
     <a href="./menu.html" class="nav-btn">Menu</a>
     <a href="./reservation.html" class="nav-btn">Réservation</a>
   </nav>
@@ -14,3 +22,4 @@
     </a>
   </div>
 </header>
+<div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
