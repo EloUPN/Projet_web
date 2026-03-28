@@ -14,8 +14,8 @@
         <label for="date">Date :</label><br>
         <input type="date" id="date" name="date" required><br><br>
 
-        <label for="heure">Heure :</label><br>
-        <input type="time" id="heure" name="heure" required><br><br>
+        <label for="heure">Heure (ouverture de 12:00 à 22:00) :</label><br>
+        <input type="text" id="heure" name="heure" class="input-heure-hhmm" inputmode="numeric" autocomplete="off" placeholder="14:30" maxlength="5" spellcheck="false" required title="Format 24 h : HH:MM"><br><br>
 
         <label for="personnes">Nombre de personnes :</label><br>
         <input type="number" id="personnes" name="personnes" min="1" max="20" required><br><br>

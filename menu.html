@@ -13,6 +13,12 @@
 
 <main>
 
+    <div class="menu-search-wrap">
+        <label for="menu-search-input">Rechercher un plat</label>
+        <input type="search" id="menu-search-input" name="menu-search" placeholder="Ex. : nouilles, koba, nem…" autocomplete="off" spellcheck="false">
+    </div>
+    <p id="menu-search-empty" class="menu-search-empty" role="status" aria-live="polite" hidden>Aucun plat ne correspond à la recherche</p>
+
     <!-- ══════════ ENTRÉES ══════════ -->
     <section class="menu-category entrees" data-category="entrees">
         <div class="category-img category-img--right">
@@ -71,6 +77,7 @@
     <script src="js/header.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/animation.js"></script>
+    <script src="js/menu-search.js"></script>
 
 </body>
 </html>
