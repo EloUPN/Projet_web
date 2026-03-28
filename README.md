@@ -152,5 +152,5 @@ Ce projet est distribué sous licence **MIT** — libre d'utilisation avec attri
 ---
 
 <div align="center">
-  Fait avec soin par <a href="https://github.com/EloUPN">EloUPN</a>
+  Fait avec soin par <a href="https://github.com/EloUPN">EloUPN</a> et <a href=https://github.com/nynyBao>nynyBao</a>
 </div>
