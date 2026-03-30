@@ -1280,3 +1280,645 @@ ul li span.price {
     flex-direction: column;
     gap: 0.25rem;
 }
+
+/* ===================================
+   MESSAGES INLINE FORMULAIRES
+   =================================== */
+.form-message {
+    padding: 0.85rem 1.1rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    margin-top: 0.25rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.form-message[hidden] {
+    display: none !important;
+}
+
+.form-message--error {
+    background: #fde8e8;
+    color: #7d1a1a;
+    border: 1px solid #f5b7b7;
+}
+
+.form-message--error::before {
+    content: "⚠";
+    flex-shrink: 0;
+    font-size: 1rem;
+}
+
+.form-message--success {
+    background: #d1f0e0;
+    color: #155f38;
+    border: 1px solid #a3d9bc;
+}
+
+.form-message--success::before {
+    content: "✓";
+    flex-shrink: 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* ===================================
+   SÉLECTEUR D'HORAIRES
+   =================================== */
+.time-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+button.time-slot {
+    width: auto;
+    flex: 0 0 auto;
+    padding: 0.3rem 0.7rem;
+    margin-top: 0;
+    background: var(--white);
+    color: var(--burgundy);
+    border: 1.5px solid var(--cream-warm);
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+    line-height: 1.4;
+}
+
+button.time-slot:hover {
+    background: var(--cream-light);
+    border-color: var(--mauve-soft);
+    color: var(--burgundy);
+    box-shadow: none;
+}
+
+button.time-slot.time-slot--selected {
+    background: var(--terracotta);
+    border-color: var(--burgundy);
+    color: var(--white);
+    box-shadow: 0 2px 8px rgba(179, 106, 94, 0.4);
+    font-weight: 700;
+}
+
+button.time-slot:focus-visible {
+    outline: 2px solid var(--terracotta);
+    outline-offset: 2px;
+}
+
+.field-error {
+    color: #7d1a1a;
+    background: #fde8e8;
+    border: 1px solid #f5b7b7;
+    border-radius: 8px;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.9rem;
+    margin-top: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.field-error::before {
+    content: "⚠";
+    flex-shrink: 0;
+}
+
+.field-error[hidden] { display: none !important; }
+
+.label-optional {
+    font-weight: 400;
+    font-size: 0.85em;
+    color: var(--mauve-soft);
+}
+
+@media (max-width: 768px) {
+    button.time-slot {
+        padding: 0.35rem 0.65rem;
+        font-size: 0.83rem;
+    }
+}
+
+/* ===================================
+   BADGES DE STATUT
+   =================================== */
+.statut-badge {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.statut-badge--en-attente {
+    background: #fff3cd;
+    color: #7d5a00;
+    border: 1px solid #ffe08a;
+}
+
+.statut-badge--validee {
+    background: #d1f0e0;
+    color: #155f38;
+    border: 1px solid #a3d9bc;
+}
+
+.statut-badge--annulee {
+    background: #e9ecef;
+    color: #495057;
+    border: 1px solid #ced4da;
+}
+
+.statut-badge--refusee {
+    background: #fde8e8;
+    color: #8b1a1a;
+    border: 1px solid #f5b7b7;
+}
+
+/* ===================================
+   PROFIL — Carte & Actions
+   =================================== */
+.profil-card {
+    background: linear-gradient(135deg, var(--white) 0%, var(--cream-light) 100%);
+    border-radius: 14px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--cream-warm);
+}
+
+.profil-card h2 {
+    border-bottom: none;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.profil-card h2::after { display: none; }
+
+.profil-card p {
+    margin-bottom: 0.4rem;
+    color: #4a4a4a;
+}
+
+.profil-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.profil-actions .btn,
+.profil-actions button {
+    width: auto;
+    padding: 0.7rem 1.5rem;
+    margin-top: 0;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    border-radius: 10px;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, var(--mauve-soft) 0%, var(--burgundy) 100%);
+}
+
+.btn-outline {
+    background: var(--white);
+    color: var(--burgundy);
+    border: 2px solid var(--terracotta);
+    box-shadow: 0 2px 8px rgba(179, 106, 94, 0.12);
+}
+
+.btn-outline:hover {
+    background: var(--cream-warm);
+}
+
+/* Spécificité renforcée pour surcharger button:not(.nav-toggle) */
+button.btn-sm,
+a.btn-sm,
+.btn.btn-sm {
+    width: auto;
+    padding: 0.45rem 1rem;
+    margin-top: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(179, 106, 94, 0.25);
+    text-transform: none;
+}
+
+/* Bouton Annuler réservation (utilisateur) */
+#infosReservation .cancel-reservation-btn {
+    width: auto;
+    align-self: flex-start;
+    padding: 0.4rem 0.85rem;
+    margin-top: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    box-shadow: 0 2px 6px rgba(179, 106, 94, 0.28);
+    border-radius: 8px;
+    background: var(--white);
+    color: #8b1a1a;
+    border: 2px solid #e06060;
+}
+
+#infosReservation .cancel-reservation-btn:hover {
+    background: #fde8e8;
+}
+
+/* ===================================
+   DASHBOARD
+   =================================== */
+.dashboard-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-header h2 {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0.25rem;
+}
+
+.dashboard-header h2::after { display: none; }
+
+.dashboard-subtitle {
+    color: var(--mauve-soft);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.admin-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--burgundy) 0%, var(--terracotta) 100%);
+    color: var(--white);
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Onglets */
+.dashboard-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--cream-warm);
+}
+
+.tab-btn {
+    width: auto;
+    padding: 0.75rem 1.75rem;
+    margin-top: 0;
+    background: transparent;
+    color: var(--mauve-soft);
+    border: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    box-shadow: none;
+    cursor: pointer;
+    margin-bottom: -2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.tab-btn:hover {
+    background: transparent;
+    color: var(--terracotta);
+    border-bottom-color: var(--cream-warm);
+}
+
+.tab-btn.active {
+    color: var(--terracotta);
+    border-bottom-color: var(--terracotta);
+    background: transparent;
+    box-shadow: none;
+}
+
+.tab-content[hidden] { display: none !important; }
+
+/* Filtres */
+.dashboard-filters {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.dashboard-filters label {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.dashboard-filters select {
+    width: auto;
+    min-width: 180px;
+    padding: 0.55rem 1rem;
+    margin-top: 0;
+    font-size: 0.95rem;
+}
+
+/* États du dashboard */
+.dashboard-loading,
+.dashboard-empty,
+.dashboard-error {
+    padding: 2rem;
+    text-align: center;
+    border-radius: 12px;
+    font-size: 1rem;
+}
+
+.dashboard-loading { color: var(--mauve-soft); background: var(--cream-light); }
+.dashboard-empty   { color: #666;              background: var(--cream-light); }
+.dashboard-error   { color: #8b1a1a;           background: #fde8e8; }
+
+/* ── Cartes réservations ── */
+.res-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+}
+
+.res-card {
+    background: var(--white);
+    border: 1px solid var(--cream-warm);
+    border-radius: 14px;
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.res-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.res-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--cream-warm);
+}
+
+.res-card-client {
+    font-weight: 700;
+    color: var(--burgundy);
+    font-size: 1rem;
+}
+
+.res-card-body p {
+    margin: 0.3rem 0;
+    font-size: 0.93rem;
+    color: #4a4a4a;
+}
+
+.res-card-actions {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--cream-light);
+}
+
+button.btn-validate,
+.btn.btn-validate {
+    background: linear-gradient(135deg, #2e8b57, #155f38);
+    flex: 1;
+    width: auto;
+    padding: 0.55rem 1rem;
+    margin-top: 0;
+    font-size: 0.85rem;
+    text-transform: none;
+}
+
+button.btn-validate:hover,
+.btn.btn-validate:hover { background: #155f38; }
+
+button.btn-refuse,
+.btn.btn-refuse {
+    background: linear-gradient(135deg, #c0392b, #8b1a1a);
+    flex: 1;
+    width: auto;
+    padding: 0.55rem 1rem;
+    margin-top: 0;
+    font-size: 0.85rem;
+    text-transform: none;
+}
+
+button.btn-refuse:hover,
+.btn.btn-refuse:hover { background: #8b1a1a; }
+
+/* ── Formulaire menu (dashboard) ── */
+.dashboard-menu-form-wrap {
+    background: linear-gradient(135deg, var(--white) 0%, var(--cream-light) 100%);
+    border: 1px solid var(--cream-warm);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.dashboard-menu-form-wrap h3 {
+    color: var(--burgundy);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-family: 'Georgia', serif;
+}
+
+.dashboard-form {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.85rem;
+    flex-wrap: wrap;
+}
+
+.form-row label {
+    flex: 0 0 100px;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.form-row input,
+.form-row select {
+    flex: 1;
+    min-width: 0;
+    margin-top: 0;
+    padding: 0.65rem 1rem;
+    font-size: 0.95rem;
+}
+
+.dashboard-form-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* ── Tableaux menu (dashboard) ── */
+.menu-group {
+    margin-bottom: 2rem;
+}
+
+.menu-group-title {
+    color: var(--burgundy);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    padding-left: 0.25rem;
+    border-left: 3px solid var(--terracotta);
+    padding-left: 0.6rem;
+}
+
+.menu-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.menu-table th {
+    background: linear-gradient(135deg, var(--burgundy) 0%, var(--terracotta) 100%);
+    color: var(--white);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-align: left;
+    padding: 0.65rem 1rem;
+    letter-spacing: 0.03em;
+}
+
+.menu-table td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--cream-light);
+    font-size: 0.93rem;
+    vertical-align: middle;
+}
+
+.menu-table tr:last-child td { border-bottom: none; }
+
+.menu-table tr:hover td {
+    background: var(--cream-light);
+}
+
+.menu-table-actions {
+    white-space: nowrap;
+    text-align: right;
+}
+
+.menu-table-actions .btn {
+    margin-left: 0.4rem;
+}
+
+button.btn-edit-item,
+.btn.btn-edit-item {
+    background: linear-gradient(135deg, var(--terracotta), var(--burgundy));
+    width: auto;
+    padding: 0.4rem 0.85rem;
+    margin-top: 0;
+    font-size: 0.82rem;
+    text-transform: none;
+}
+
+button.btn-delete-item,
+.btn.btn-delete-item {
+    background: linear-gradient(135deg, #c0392b, #8b1a1a);
+    width: auto;
+    padding: 0.4rem 0.85rem;
+    margin-top: 0;
+    font-size: 0.82rem;
+    text-transform: none;
+}
+
+/* ── Section menu vide ── */
+.menu-category--empty-section {
+    display: none !important;
+}
+
+/* ── Responsive dashboard ── */
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .res-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-row label {
+        flex: none;
+    }
+
+    .dashboard-filters {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .dashboard-filters select {
+        width: 100%;
+    }
+
+    .menu-table { font-size: 0.88rem; }
+    .menu-table th,
+    .menu-table td { padding: 0.5rem 0.65rem; }
+
+    .tab-btn {
+        padding: 0.65rem 1.1rem;
+        font-size: 0.95rem;
+    }
+
+    .profil-actions {
+        flex-direction: column;
+    }
+
+    .profil-actions .btn,
+    .profil-actions button {
+        width: 100%;
+        text-align: center;
+    }
+}

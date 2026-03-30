@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Menu</title>
+    <title>Menu — Nylo</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -15,58 +15,64 @@
 <main>
 
     <div class="menu-search-wrap">
-        <label for="menu-search-input">Rechercher un plat</label>
-        <input type="search" id="menu-search-input" name="menu-search" placeholder="Ex. : nouilles, koba, nem…" autocomplete="off" spellcheck="false">
+        <label for="menu-search-input">Rechercher un plat ou une boisson</label>
+        <input type="search" id="menu-search-input" name="menu-search"
+               placeholder="Ex. : nouilles, koba, thé…"
+               autocomplete="off" spellcheck="false">
     </div>
-    <p id="menu-search-empty" class="menu-search-empty" role="status" aria-live="polite" hidden>Aucun plat ne correspond à la recherche</p>
+    <p id="menu-search-empty" class="menu-search-empty"
+       role="status" aria-live="polite" hidden>
+        Aucun plat ne correspond à la recherche
+    </p>
 
     <!-- ══════════ ENTRÉES ══════════ -->
-    <section class="menu-category entrees" data-category="entrees">
+    <section class="menu-category" data-category="entree">
         <div class="category-img category-img--right">
             <img src="images/E1.png" alt="Entrée nems croustillants" class="dish-img dish-img--secondary">
-            <img src="images/E2.png" alt="Entrée assiette colorée" class="dish-img dish-img--primary">
+            <img src="images/E2.png" alt="Entrée assiette colorée"   class="dish-img dish-img--primary">
         </div>
         <div class="category-content">
             <h2>Entrées</h2>
-            <ul>
-                <li><span>Nem de viandes</span><span class="price">5€</span></li>
-                <li><span>Composé</span><span class="price">6€</span></li>
-                <li><span>Achard de légumes</span><span class="price">7€</span></li>
-                <li><span>Raviolis vapeur (Jiaozi)</span><span class="price">8€</span></li>
+            <ul id="menu-list-entree">
+                <li class="menu-loading"><span>Chargement…</span></li>
             </ul>
         </div>
     </section>
 
     <!-- ══════════ PLATS ══════════ -->
-    <section class="menu-category plats" data-category="plats">
+    <section class="menu-category" data-category="plat">
         <div class="category-content">
             <h2>Plats</h2>
-            <ul>
-                <li><span>Ravitoto sy henakisoa</span><span class="price">12€</span></li>
-                <li><span>Nouilles sautées</span><span class="price">14€</span></li>
-                <li><span>Akoho sy voanio</span><span class="price">16€</span></li>
-                <li><span>Poulet croustillant au sésame</span><span class="price">18€</span></li>
+            <ul id="menu-list-plat">
+                <li class="menu-loading"><span>Chargement…</span></li>
             </ul>
         </div>
         <div class="category-img category-img--left">
-            <img src="images/P1.png" alt="Plat riz aux herbes" class="dish-img dish-img--primary">
+            <img src="images/P1.png" alt="Plat riz aux herbes"    class="dish-img dish-img--primary">
             <img src="images/P2.png" alt="Plat momos en bouillon" class="dish-img dish-img--secondary">
         </div>
     </section>
 
     <!-- ══════════ DESSERTS ══════════ -->
-    <section class="menu-category desserts" data-category="desserts">
+    <section class="menu-category" data-category="dessert">
         <div class="category-img category-img--right">
             <img src="images/D1.png" alt="Dessert gâteau feuille bananier" class="dish-img dish-img--secondary">
-            <img src="images/D2.png" alt="Dessert boules coco" class="dish-img dish-img--primary">
+            <img src="images/D2.png" alt="Dessert boules coco"              class="dish-img dish-img--primary">
         </div>
         <div class="category-content">
             <h2>Desserts</h2>
-            <ul>
-                <li><span>Koba</span><span class="price">4€</span></li>
-                <li><span>Perle au coco</span><span class="price">5€</span></li>
-                <li><span>Mofogasy</span><span class="price">6€</span></li>
-                <li><span>Biscuit Chinois</span><span class="price">7€</span></li>
+            <ul id="menu-list-dessert">
+                <li class="menu-loading"><span>Chargement…</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ══════════ BOISSONS ══════════ -->
+    <section class="menu-category menu-category--boissons" data-category="boisson">
+        <div class="category-content">
+            <h2>Boissons</h2>
+            <ul id="menu-list-boisson">
+                <li class="menu-loading"><span>Chargement…</span></li>
             </ul>
         </div>
     </section>
@@ -75,10 +81,11 @@
 
 <div id="footer-container"></div>
 
-    <script src="js/header.js"></script>
-    <script src="js/footer.js"></script>
-    <script src="js/animation.js"></script>
-    <script src="js/menu-search.js"></script>
+<script src="js/header.js"></script>
+<script src="js/footer.js"></script>
+<script src="js/animation.js"></script>
+<script src="js/menu-search.js"></script>
+<script src="js/menu-load.js"></script>
 
 </body>
 </html>

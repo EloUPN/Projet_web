@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Réservation</title>
+    <title>Réservation — Nylo</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -12,17 +12,21 @@
 
 <main>
     <form id="formReservation">
-        <label for="date">Date :</label><br>
-        <input type="date" id="date" name="date" required><br><br>
 
-        <label for="heure">Heure (ouverture de 12:00 à 22:00) :</label><br>
-        <input type="text" id="heure" name="heure" class="input-heure-hhmm" inputmode="numeric" autocomplete="off" placeholder="14:30" maxlength="5" spellcheck="false" required title="Format 24 h : HH:MM"><br><br>
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required>
 
-        <label for="personnes">Nombre de personnes :</label><br>
-        <input type="number" id="personnes" name="personnes" min="1" max="20" required><br><br>
+        <label>Horaire</label>
+        <!-- Valeur transmise au serveur via ce champ caché -->
+        <input type="hidden" id="heure" name="heure">
+        <div id="time-picker" class="time-picker" role="group" aria-label="Choisir un horaire"></div>
+        <p id="heure-error" class="field-error" hidden>Veuillez sélectionner un horaire.</p>
 
-        <label for="message">Message :</label><br>
-        <input type="text" id="message" name="message"><br><br>
+        <label for="personnes">Nombre de personnes</label>
+        <input type="number" id="personnes" name="personnes" min="1" max="20" required>
+
+        <label for="message">Message <span class="label-optional">(facultatif)</span></label>
+        <input type="text" id="message" name="message" placeholder="Allergie, occasion spéciale…">
 
         <button type="submit">Réserver</button>
     </form>

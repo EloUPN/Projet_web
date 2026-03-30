@@ -41,9 +41,10 @@ echo json_encode([
     "success" => true,
     "message" => "Connexion réussie",
     "user" => [
-        "id" => $user["id"],
-        "nom" => $user["nom"],
-        "prenom" => $user["prenom"],
-        "email" => $user["email"]
+        "id"       => $user["id"],
+        "nom"      => $user["nom"],
+        "prenom"   => $user["prenom"],
+        "email"    => $user["email"],
+        "is_admin" => intval($user["is_admin"] ?? 0)
     ]
 ]);
