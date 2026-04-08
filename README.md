@@ -45,6 +45,7 @@ Site web du restaurant **Nylo**, fondé par les cheffes **Elodie Zhou** et **Ny 
 
 ## Structure du projet
 
+```
 Projet_web/
 ├── index.html
 ├── menu.html
@@ -57,6 +58,9 @@ Projet_web/
 ├── css/
 │   └── style.css
 │   └── tritopani.ttf     # La police du logo
+│
+├── images/
+│   └── user.png          # L'image obligatoire pour le le bouton profil les restes sont facultatifs
 │
 ├── js/
 │   ├── auth.js           # Gestion session (localStorage)
@@ -81,6 +85,7 @@ Projet_web/
 └── composants/
     ├── header.html
     └── footer.html
+```
 
 ---
 
@@ -125,7 +130,7 @@ CREATE TABLE reservations (
 
 CREATE TABLE menu (
     id   INT AUTO_INCREMENT PRIMARY KEY,
-    type VARCHAR(20)   NOT NULL,   -- entree | plat | dessert | boisson
+    type VARCHAR(20)   NOT NULL,
     nom  VARCHAR(150)  NOT NULL,
     prix DECIMAL(6,2)  NOT NULL DEFAULT 0
 );
@@ -152,7 +157,10 @@ $password = "";
 
 Placer le dossier dans le répertoire web de ton serveur (`htdocs` pour XAMPP) et ouvrir :
 
+```
 http://localhost/Projet_web/
+```
+
 ---
 
 ## Règles métier
